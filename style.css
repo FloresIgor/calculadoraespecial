@@ -1,0 +1,123 @@
+/* styles.css */
+
+/* Estilo padrão (modo claro) */
+body {
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.calculator-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calculator {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+p {
+    margin-top: 20px;
+    width: 80%;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+    transition: color 0.3s;
+}
+
+#display {
+    width: 100%;
+    height: 40px;
+    font-size: 1.2rem;
+    text-align: right;
+    padding: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+    transition: background 0.3s, border 0.3s;
+}
+
+button {
+    font-size: 1rem;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    transition: background-color 0.2s, transform 0.1s, box-shadow 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    background-color: #003f7f;
+    transform: scale(0.95);
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+/* Estilo do modo escuro */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode .calculator {
+    background: #1e1e1e;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode h1 {
+    color: #ffffff;
+}
+
+body.dark-mode #display {
+    background: #333333;
+    color: #ffffff;
+    border: 1px solid #555555;
+}
+
+body.dark-mode button {
+    background-color: #0056b3;
+    color: white;
+}
+
+body.dark-mode button:hover {
+    background-color: #003f7f;
+}
+
+body.dark-mode button:active {
+    background-color: #002f5f;
+}
+
+body.dark-mode button:focus {
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.5);
+}
