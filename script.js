@@ -90,6 +90,16 @@ function power(base, exponent) {
 }
 
 function calculateNotable(operation) {
+    if (operation === 'power') {
+        let [base, exponent] = display.value.split('^').map(Number);
+        if (isNaN(base) || isNaN(exponent)) {
+            alert("Digite uma expressão no formato base^exponente!");
+            return;
+        }
+        display.value = power(base, exponent);
+        return;
+    }
+
     let value = parseInt(display.value);
     if (isNaN(value)) {
         alert("Digite um número válido!");
@@ -123,10 +133,6 @@ function calculateNotable(operation) {
             break;
         case 'iteratedTermial':
             display.value = iteratedTermial(value);
-            break;
-        case 'power':
-            let [base, exponent] = display.value.split('^').map(Number);
-            display.value = power(base, exponent);
             break;
         default:
             alert("Operação desconhecida!");
