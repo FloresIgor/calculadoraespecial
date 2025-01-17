@@ -19,6 +19,9 @@ function calculateResult() {
     } catch (e) {
         alert("Expressão inválida");
         clearDisplay();
+    }
+}
+
 function updatePreview() {
     const preview = document.getElementById('preview');
     try {
@@ -79,6 +82,10 @@ function iteratedTermial(n) {
     return termial(termial(n));
 }
 
+function power(base, exponent) {
+    return Math.pow(base, exponent);
+}
+
 function calculateNotable(operation) {
     let value = parseInt(display.value);
     if (isNaN(value)) {
@@ -121,7 +128,6 @@ function calculateNotable(operation) {
         default:
             alert("Operação desconhecida!");
     }
-}
 }
 
 // Listeners de clique e teclado
