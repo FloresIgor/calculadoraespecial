@@ -28,7 +28,7 @@ function deleteLast() {
 
 function calculateResult() {
     try {
-        preview.value = eval(display.value.replace(/\^/g, '**').replace(/×/g, '*').replace(/÷/g, '/'));
+        preview.value = eval(display.value.replace(/\^/g, '**').replace(/×/g, '*').replace(/÷/g, '/').replace(/,/g, '.'));
     } catch (e) {
         alert("Expressão inválida");
         clearDisplay();
@@ -37,7 +37,7 @@ function calculateResult() {
 
 function updatePreview() {
     try {
-        preview.value = eval(display.value.replace(/\^/g, '**').replace(/×/g, '*').replace(/÷/g, '/'));
+        preview.value = eval(display.value.replace(/\^/g, '**').replace(/×/g, '*').replace(/÷/g, '/').replace(/,/g, '.'));
     } catch (e) {
         preview.value = '';
     }
@@ -151,7 +151,7 @@ document.querySelector('.buttons').addEventListener('click', function (e) {
             if (key === 'Escape') clearDisplay();
             else if (key === 'Backspace') deleteLast();
             else if (key === 'Enter') calculateResult();
-            else if (key === ',') appendValue('.');
+            else if (key === ',') appendValue(',');
             else appendValue(key);
         }
     }
