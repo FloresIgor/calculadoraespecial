@@ -17,7 +17,7 @@ function deleteLast() {
 
 function calculateResult() {
     try {
-        display.value = eval(display.value.replaceAll('^', '**').replaceAll('×', '*').replaceAll('÷', '/'));
+        display.value = eval(display.value.replace(/\^/g, '**').replace(/×/g, '*').replace(/÷/g, '/'));
         updatePreview();
     } catch (e) {
         alert("Expressão inválida");
@@ -28,7 +28,7 @@ function calculateResult() {
 function updatePreview() {
     const preview = document.getElementById('preview');
     try {
-        preview.value = eval(display.value.replaceAll('^', '**').replaceAll('×', '*').replaceAll('÷', '/'));
+        preview.value = eval(display.value.replace(/\^/g, '**').replace(/×/g, '*').replace(/÷/g, '/'));
     } catch (e) {
         preview.value = '';
     }
