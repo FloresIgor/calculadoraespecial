@@ -57,6 +57,7 @@ h1 {
     border-radius: 5px;
     background: #f9f9f9;
     transition: background 0.3s, border 0.3s;
+    position: relative;
 }
 
 #preview {
@@ -70,6 +71,25 @@ h1 {
     border-radius: 5px;
     background: #f0f0f0;
     color: #333;
+}
+
+.cursor {
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 1px);
+    height: 20px;
+    width: 2px;
+    background: black;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    from, to {
+        visibility: hidden;
+    }
+    50% {
+        visibility: visible;
+    }
 }
 
 button {
