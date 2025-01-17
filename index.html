@@ -7,54 +7,54 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-<section class="calculator-section">
-    <h1>Calculadora Experimental</h1>
-    <div class="container">
-        <button id="toggle-button">Dark Mode</button>
-    </div>
-    <div class="calculator">
+    <section class="calculator-section">
         <h1>Calculadora Experimental</h1>
-        <input type="text" id="preview" placeholder="Pré-visualização" readonly>
-        <div class="buttons">
-            <!-- Números -->
-            <button data-key="7">7</button>
-            <button data-key="8">8</button>
-            <button data-key="9">9</button>
-            <button data-key="/">÷</button>
-            <button data-key="4">4</button>
-            <button data-key="5">5</button>
-            <button data-key="6">6</button>
-            <button data-key="*">×</button>
-            <button data-key="1">1</button>
-            <button data-key="2">2</button>
-            <button data-key="3">3</button>
-            <button data-key="-">-</button>
-            <button data-key="(">(</button>
-            <button data-key="0">0</button>
-            <button data-key=")">)</button>
-            <button data-key="+">+</button>
-
-            <!-- Operações Notáveis -->
-            <button data-operation="sqrt">√</button>
-            <button data-operation="factorial">n!</button>
-            <button data-operation="doubleFactorial">n!!</button>
-            <button data-operation="primorial">n#</button>
-            <button data-operation="subFactorial">!n</button>
-            <button data-operation="termial">n?</button>
-            <button data-operation="oscillatingFactorial">n¿</button>
-            <button data-operation="iteratedDoubleFactorial">(n!!)!</button>
-            <button data-operation="iteratedTermial">(n?)?</button>
-            <button data-operation="power">^</button>
-
-            <!-- Outros Controles -->
-            <button data-key="Escape">C</button>
-            <button data-key="Backspace">DEL</button>
-            <button data-key="Enter">=</button>
+        <div class="container">
+            <button id="toggle-button">Dark Mode</button>
         </div>
-    </div>
-</section>
-<p>Esta calculadora faz parte de um projeto matemático que estou desenvolvendo. Além das operações comuns como soma, subtração, multiplicação e divisão, a calculadora inclui operações especiais não tão comuns, como o primorial 'n#' e o termial 'n?'. Por isso, precisei criar uma calculadora especial que suporte essas funções avançadas.</p>
-<script src="script.js"></script>
+        <div class="calculator">
+            <h1>Calculadora Experimental</h1>
+            <input type="text" id="preview" placeholder="Pré-visualização" readonly>
+            <input type="text" id="display" placeholder="0" readonly>
+            <div class="buttons">
+                <!-- Números -->
+                <button data-key="7">7</button>
+                <button data-key="8">8</button>
+                <button data-key="9">9</button>
+                <button data-key="/">÷</button>
+                <button data-key="4">4</button>
+                <button data-key="5">5</button>
+                <button data-key="6">6</button>
+                <button data-key="*">×</button>
+                <button data-key="1">1</button>
+                <button data-key="2">2</button>
+                <button data-key="3">3</button>
+                <button data-key="-">-</button>
+                <button data-key="(">(</button>
+                <button data-key="0">0</button>
+                <button data-key=")">)</button>
+                <button data-key="+">+</button>
+
+                <!-- Operações Notáveis -->
+                <button data-operation="sqrt">√</button>
+                <button data-operation="factorial">n!</button>
+                <button data-operation="doubleFactorial">n!!</button>
+                <button data-operation="primorial">n#</button>
+                <button data-operation="subFactorial">!n</button>
+                <button data-operation="termial">n?</button>
+                <button data-operation="oscillatingFactorial">n¿</button>
+                <button data-operation="iteratedDoubleFactorial">(n!!)!</button>
+                <button data-operation="iteratedTermial">(n?)?</button>
+                <button data-operation="power">^</button>
+
+                <!-- Outros Controles -->
+                <button data-key="Escape">C</button>
+                <button data-key="Backspace">DEL</button>
+                <button data-key="Enter">=</button>
+            </div>
+        </div>
+    </section>
+    <p>Esta calculadora faz parte de um projeto matemático que estou desenvolvendo. Além das operações comuns como soma, subtração, multiplicação e divisão, a calculadora inclui operações experimentais.</p>
+    <script src="script.js"></script>
 </body>
 </html>
