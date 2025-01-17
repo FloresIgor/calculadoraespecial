@@ -7,15 +7,18 @@ function appendValue(value) {
 
 function clearDisplay() {
     display.value = '';
+    updatePreview();
 }
 
 function deleteLast() {
     display.value = display.value.slice(0, -1);
+    updatePreview();
 }
 
 function calculateResult() {
     try {
         display.value = eval(display.value.replace('×', '*').replace('÷', '/'));
+        updatePreview();
     } catch (e) {
         alert("Expressão inválida");
         clearDisplay();
@@ -25,7 +28,7 @@ function calculateResult() {
 function updatePreview() {
     const preview = document.getElementById('preview');
     try {
-        preview.value = eval(display.value.replace('\u00d7', '*').replace('\u00f7', '/'));
+        preview.value = eval(display.value.replace('×', '*').replace('÷', '/'));
     } catch (e) {
         preview.value = '';
     }
