@@ -1,4 +1,5 @@
 const display = document.getElementById('display');
+const preview = document.getElementById('preview');
 
 function appendValue(value) {
     display.value += value;
@@ -7,7 +8,7 @@ function appendValue(value) {
 
 function clearDisplay() {
     display.value = '';
-    updatePreview();
+    preview.value = '';
 }
 
 function deleteLast() {
@@ -17,8 +18,7 @@ function deleteLast() {
 
 function calculateResult() {
     try {
-        display.value = eval(display.value.replace(/\^/g, '**').replace(/×/g, '*').replace(/÷/g, '/'));
-        updatePreview();
+        preview.value = eval(display.value.replace(/\^/g, '**').replace(/×/g, '*').replace(/÷/g, '/'));
     } catch (e) {
         alert("Expressão inválida");
         clearDisplay();
@@ -26,7 +26,6 @@ function calculateResult() {
 }
 
 function updatePreview() {
-    const preview = document.getElementById('preview');
     try {
         preview.value = eval(display.value.replace(/\^/g, '**').replace(/×/g, '*').replace(/÷/g, '/'));
     } catch (e) {
@@ -98,31 +97,31 @@ function calculateNotable(operation) {
 
     switch (operation) {
         case 'sqrt':
-            display.value = Math.sqrt(value);
+            preview.value = Math.sqrt(value);
             break;
         case 'factorial':
-            display.value = factorial(value);
+            preview.value = factorial(value);
             break;
         case 'doubleFactorial':
-            display.value = doubleFactorial(value);
+            preview.value = doubleFactorial(value);
             break;
         case 'primorial':
-            display.value = primorial(value);
+            preview.value = primorial(value);
             break;
         case 'subFactorial':
-            display.value = subFactorial(value);
+            preview.value = subFactorial(value);
             break;
         case 'termial':
-            display.value = termial(value);
+            preview.value = termial(value);
             break;
         case 'oscillatingFactorial':
-            display.value = oscillatingFactorial(value);
+            preview.value = oscillatingFactorial(value);
             break;
         case 'iteratedDoubleFactorial':
-            display.value = iteratedDoubleFactorial(value);
+            preview.value = iteratedDoubleFactorial(value);
             break;
         case 'iteratedTermial':
-            display.value = iteratedTermial(value);
+            preview.value = iteratedTermial(value);
             break;
         default:
             alert("Operação desconhecida!");
