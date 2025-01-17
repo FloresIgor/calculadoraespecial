@@ -2,7 +2,11 @@ const display = document.getElementById('display');
 const preview = document.getElementById('preview');
 
 function appendValue(value) {
-    display.value += value;
+    const cursorPos = display.selectionStart;
+    const textBeforeCursor = display.value.substring(0, cursorPos);
+    const textAfterCursor = display.value.substring(cursorPos);
+    display.value = textBeforeCursor + value + textAfterCursor;
+    display.selectionStart = display.selectionEnd = cursorPos + value.length;
     updatePreview();
 }
 
@@ -12,8 +16,14 @@ function clearDisplay() {
 }
 
 function deleteLast() {
-    display.value = display.value.slice(0, -1);
-    updatePreview();
+    const cursorPos = display.selectionStart;
+    if (cursorPos > 0) {
+        const textBeforeCursor = display.value.substring(0, cursorPos - 1);
+        const textAfterCursor = display.value.substring(cursorPos);
+        display.value = textBeforeCursor + textAfterCursor;
+        display.selectionStart = display.selectionEnd = cursorPos - 1;
+        updatePreview();
+    }
 }
 
 function calculateResult() {
@@ -141,6 +151,7 @@ document.querySelector('.buttons').addEventListener('click', function (e) {
             if (key === 'Escape') clearDisplay();
             else if (key === 'Backspace') deleteLast();
             else if (key === 'Enter') calculateResult();
+            else if (key === ',') appendValue('.');
             else appendValue(key);
         }
     }
@@ -148,8 +159,14 @@ document.querySelector('.buttons').addEventListener('click', function (e) {
 
 document.addEventListener('keydown', function (event) {
     const key = event.key;
-    const button = document.querySelector(`button[data-key="${key}"]`);
-    if (button) button.click();
+    if (key === 'ArrowLeft') {
+        display.selectionStart = display.selectionEnd = Math.max(display.selectionStart - 1, 0);
+    } else if (key === 'ArrowRight') {
+        display.selectionStart = display.selectionEnd = Math.min(display.selectionStart + 1, display.value.length);
+    } else {
+        const button = document.querySelector(`button[data-key="${key}"]`);
+        if (button) button.click();
+    }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
