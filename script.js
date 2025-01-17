@@ -2,6 +2,7 @@ const display = document.getElementById('display');
 
 function appendValue(value) {
     display.value += value;
+    updatePreview();
 }
 
 function clearDisplay() {
@@ -18,6 +19,12 @@ function calculateResult() {
     } catch (e) {
         alert("Expressão inválida");
         clearDisplay();
+function updatePreview() {
+    const preview = document.getElementById('preview');
+    try {
+        preview.value = eval(display.value.replace('\u00d7', '*').replace('\u00f7', '/'));
+    } catch (e) {
+        preview.value = '';
     }
 }
 
@@ -107,9 +114,14 @@ function calculateNotable(operation) {
         case 'iteratedTermial':
             display.value = iteratedTermial(value);
             break;
+        case 'power':
+            let [base, exponent] = display.value.split('^').map(Number);
+            display.value = power(base, exponent);
+            break;
         default:
             alert("Operação desconhecida!");
     }
+}
 }
 
 // Listeners de clique e teclado
