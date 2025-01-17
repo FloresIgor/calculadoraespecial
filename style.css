@@ -59,6 +59,19 @@ h1 {
     transition: background 0.3s, border 0.3s;
 }
 
+#preview {
+    width: 100%;
+    height: 30px;
+    font-size: 1rem;
+    text-align: right;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f0f0f0;
+    color: #333;
+}
+
 button {
     font-size: 1rem;
     padding: 10px;
@@ -94,18 +107,6 @@ body.dark-mode .calculator {
     background: #1e1e1e;
     box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
 }
-#preview {
-    width: 100%;
-    height: 30px;
-    font-size: 1rem;
-    text-align: right;
-    padding: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background: #f0f0f0;
-    color: #333;
-}
 
 body.dark-mode h1 {
     color: #ffffff;
@@ -115,6 +116,12 @@ body.dark-mode #display {
     background: #333333;
     color: #ffffff;
     border: 1px solid #555555;
+}
+
+body.dark-mode #preview {
+    background: #333;
+    color: #fff;
+    border-color: #555;
 }
 
 body.dark-mode button {
@@ -132,9 +139,4 @@ body.dark-mode button:active {
 
 body.dark-mode button:focus {
     box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.5);
-}
-body.dark-mode #preview {
-    background: #333;
-    color: #fff;
-    border-color: #555;
 }
