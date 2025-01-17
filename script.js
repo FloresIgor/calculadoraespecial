@@ -8,11 +8,13 @@ function appendValue(value) {
     display.value = textBeforeCursor + value + textAfterCursor;
     display.selectionStart = display.selectionEnd = cursorPos + value.length;
     updatePreview();
+    updateCursor();
 }
 
 function clearDisplay() {
     display.value = '';
     preview.value = '';
+    updateCursor();
 }
 
 function deleteLast() {
@@ -23,6 +25,7 @@ function deleteLast() {
         display.value = textBeforeCursor + textAfterCursor;
         display.selectionStart = display.selectionEnd = cursorPos - 1;
         updatePreview();
+        updateCursor();
     }
 }
 
@@ -33,6 +36,7 @@ function calculateResult() {
         alert("Expressão inválida");
         clearDisplay();
     }
+    updateCursor();
 }
 
 function updatePreview() {
@@ -41,6 +45,17 @@ function updatePreview() {
     } catch (e) {
         preview.value = '';
     }
+}
+
+function updateCursor() {
+    const cursorPos = display.selectionStart;
+    const textBeforeCursor = display.value.substring(0, cursorPos);
+    const textAfterCursor = display.value.substring(cursorPos);
+    display.value = textBeforeCursor + '|' + textAfterCursor;
+    setTimeout(() => {
+        display.value = display.value.replace('|', '');
+        display.selectionStart = display.selectionEnd = cursorPos;
+    }, 500);
 }
 
 // Funções matemáticas especiais
@@ -136,6 +151,7 @@ function calculateNotable(operation) {
         default:
             alert("Operação desconhecida!");
     }
+    updateCursor();
 }
 
 // Listeners de clique e teclado
@@ -167,6 +183,7 @@ document.addEventListener('keydown', function (event) {
         const button = document.querySelector(`button[data-key="${key}"]`);
         if (button) button.click();
     }
+    updateCursor();
 });
 
 document.addEventListener('DOMContentLoaded', () => {
