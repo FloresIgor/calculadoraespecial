@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Especial</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="Icon/calculator.ico" type="image/x-icon">
 </head>
 <body>
     <section class="calculator-section">
@@ -15,7 +14,7 @@
         </div>
         <div class="calculator">
             <input type="text" id="preview" placeholder="Pré-visualização" readonly>
-            <input type="text" id="display" placeholder="0" readonly>
+            <input type="text" id="display" placeholder="0">
             <div class="buttons">
                 <!-- Números -->
                 <button data-key="7">7</button>
@@ -34,10 +33,6 @@
                 <button data-key="0">0</button>
                 <button data-key=")">)</button>
                 <button data-key="+">+</button>
-                <button data-key="^">^</button>
-                <button data-key=",">,</button>
-                <button data-key="ArrowLeft">←</button>
-                <button data-key="ArrowRight">→</button>
 
                 <!-- Operações Notáveis -->
                 <button data-operation="sqrt">√</button>
@@ -49,6 +44,7 @@
                 <button data-operation="oscillatingFactorial">n¿</button>
                 <button data-operation="iteratedDoubleFactorial">(n!!)!</button>
                 <button data-operation="iteratedTermial">(n?)?</button>
+                <button data-operation="power">^</button>
 
                 <!-- Outros Controles -->
                 <button data-key="Escape">C</button>
@@ -57,7 +53,7 @@
             </div>
         </div>
     </section>
-    <p>Esta calculadora faz parte de um projeto matemático que estou desenvolvendo. Além das operações comuns como soma, subtração, multiplicação e divisão, a calculadora inclui operações matemáticas especiais.</p>
+    <p>Esta calculadora faz parte de um projeto matemático que estou desenvolvendo. Além das operações comuns como soma, subtração, multiplicação e divisão, a calculadora inclui operações experimentais.</p>
     <script src="script.js"></script>
 </body>
 </html>
