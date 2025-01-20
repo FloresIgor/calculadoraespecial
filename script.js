@@ -1,61 +1,37 @@
 const display = document.getElementById('display');
-const preview = document.getElementById('preview');
 
 function appendValue(value) {
-    const cursorPos = display.selectionStart;
-    const textBeforeCursor = display.value.substring(0, cursorPos);
-    const textAfterCursor = display.value.substring(cursorPos);
-    display.value = textBeforeCursor + value + textAfterCursor;
-    display.selectionStart = display.selectionEnd = cursorPos + value.length;
+    display.value += value;
     updatePreview();
-    updateCursor();
 }
 
 function clearDisplay() {
     display.value = '';
-    preview.value = '';
-    updateCursor();
+    updatePreview();
 }
 
 function deleteLast() {
-    const cursorPos = display.selectionStart;
-    if (cursorPos > 0) {
-        const textBeforeCursor = display.value.substring(0, cursorPos - 1);
-        const textAfterCursor = display.value.substring(cursorPos);
-        display.value = textBeforeCursor + textAfterCursor;
-        display.selectionStart = display.selectionEnd = cursorPos - 1;
-        updatePreview();
-        updateCursor();
-    }
+    display.value = display.value.slice(0, -1);
+    updatePreview();
 }
 
 function calculateResult() {
     try {
-        preview.value = eval(display.value.replace(/\^/g, '**').replace(/×/g, '*').replace(/÷/g, '/').replace(/,/g, '.'));
+        display.value = eval(display.value.replace('×', '*').replace('÷', '/'));
+        updatePreview();
     } catch (e) {
         alert("Expressão inválida");
         clearDisplay();
     }
-    updateCursor();
 }
 
 function updatePreview() {
+    const preview = document.getElementById('preview');
     try {
-        preview.value = eval(display.value.replace(/\^/g, '**').replace(/×/g, '*').replace(/÷/g, '/').replace(/,/g, '.'));
+        preview.value = eval(display.value.replace('×', '*').replace('÷', '/'));
     } catch (e) {
         preview.value = '';
     }
-}
-
-function updateCursor() {
-    const cursorPos = display.selectionStart;
-    const textBeforeCursor = display.value.substring(0, cursorPos);
-    const textAfterCursor = display.value.substring(cursorPos);
-    display.value = textBeforeCursor + '|' + textAfterCursor;
-    setTimeout(() => {
-        display.value = display.value.replace('|', '');
-        display.selectionStart = display.selectionEnd = cursorPos;
-    }, 500);
 }
 
 // Funções matemáticas especiais
@@ -122,36 +98,39 @@ function calculateNotable(operation) {
 
     switch (operation) {
         case 'sqrt':
-            preview.value = Math.sqrt(value);
+            display.value = Math.sqrt(value);
             break;
         case 'factorial':
-            preview.value = factorial(value);
+            display.value = factorial(value);
             break;
         case 'doubleFactorial':
-            preview.value = doubleFactorial(value);
+            display.value = doubleFactorial(value);
             break;
         case 'primorial':
-            preview.value = primorial(value);
+            display.value = primorial(value);
             break;
         case 'subFactorial':
-            preview.value = subFactorial(value);
+            display.value = subFactorial(value);
             break;
         case 'termial':
-            preview.value = termial(value);
+            display.value = termial(value);
             break;
         case 'oscillatingFactorial':
-            preview.value = oscillatingFactorial(value);
+            display.value = oscillatingFactorial(value);
             break;
         case 'iteratedDoubleFactorial':
-            preview.value = iteratedDoubleFactorial(value);
+            display.value = iteratedDoubleFactorial(value);
             break;
         case 'iteratedTermial':
-            preview.value = iteratedTermial(value);
+            display.value = iteratedTermial(value);
+            break;
+        case 'power':
+            let [base, exponent] = display.value.split('^').map(Number);
+            display.value = power(base, exponent);
             break;
         default:
             alert("Operação desconhecida!");
     }
-    updateCursor();
 }
 
 // Listeners de clique e teclado
@@ -167,7 +146,6 @@ document.querySelector('.buttons').addEventListener('click', function (e) {
             if (key === 'Escape') clearDisplay();
             else if (key === 'Backspace') deleteLast();
             else if (key === 'Enter') calculateResult();
-            else if (key === ',') appendValue(',');
             else appendValue(key);
         }
     }
@@ -175,15 +153,8 @@ document.querySelector('.buttons').addEventListener('click', function (e) {
 
 document.addEventListener('keydown', function (event) {
     const key = event.key;
-    if (key === 'ArrowLeft') {
-        display.selectionStart = display.selectionEnd = Math.max(display.selectionStart - 1, 0);
-    } else if (key === 'ArrowRight') {
-        display.selectionStart = display.selectionEnd = Math.min(display.selectionStart + 1, display.value.length);
-    } else {
-        const button = document.querySelector(`button[data-key="${key}"]`);
-        if (button) button.click();
-    }
-    updateCursor();
+    const button = document.querySelector(`button[data-key="${key}"]`);
+    if (button) button.click();
 });
 
 document.addEventListener('DOMContentLoaded', () => {
